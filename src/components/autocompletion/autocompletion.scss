@@ -1,0 +1,16 @@
+.autocomplete__container {
+  width:100%;
+  position: relative;
+}
+
+.autocomplete__input {
+  width:100%;
+  box-sizing: border-box;
+}
+
+.autocomplete__list-container {
+  position: absolute;
+  top:100%;
+  width:100%;
+  background: #ffffff;
+}
