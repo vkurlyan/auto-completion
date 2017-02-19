@@ -1,6 +1,6 @@
 # React AutoCompletion component
 
-React AutoCompletion component helps to autocomplete search asynchronously.
+React AutoCompletion component helps to autocomplete a search asynchronously.
 
 Example:
 
@@ -17,24 +17,44 @@ Example:
 />
 ```
 
+## Install
+
+* Run commands:
+
+> git clone https://github.com/vkurlyan/auto-completion.git
+
+> cd auto-completion
+
+> npm install
+
+> npm start
+
+* Then you will able to open example by address http://127.0.0.1:8888/
+
+## Tests
+
+To run tests execute command in root directory:
+
+> npm test
+
 ## Props
 
 * **autocompleteList [Array]** optional
 
-An array of text that will be shown in autocomplete list.
+An array of texts will be shown in autocomplete list.
 
 * **onChange [function]** optional
 
-Callback for input onChange event. The first argument is an input value. Callback can perform request to API and set **autocompleteList**
+Handler of input onChange event. The first argument is an input value. Handler can perform request to API and set **autocompleteList**
 
 * **onSelect [function]** optional
 
-Callback that is called when a user selects a value from autocomplete list. First argument is selected value.
+Handler is called when a user selects a value from the list. First argument is selected value.
 
 * **InputComponent [Object]** optional
 
-Component that will be used instead of HTML input. For example, you can use React-Bootstrap _FormControl_
+Component that will be used instead of HTML input element. For example, you can use React-Bootstrap _FormControl_
 
 * **attr [Object]** optional
 
-Custom attributes for input component
+Custom attributes for the input component
