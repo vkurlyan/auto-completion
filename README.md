@@ -1,97 +1,40 @@
-# react-webpack-babel
-Simple React Webpack Babel Starter Kit
+# React AutoCompletion component
 
-Tired of complicated starters with 200MB of dependencies which are hard to understand and modify?
+React AutoCompletion component helps to autocomplete search asynchronously.
 
-Try this is a simple [React](https://facebook.github.io/react/), [Webpack](http://webpack.github.io/) and [Babel](https://babeljs.io/) application with nothing else in it.
-
-### What's in it?
-
-* Simple src/index.jsx and src/index.css (local module css).
-* Webpack configuration for development (with hot reloading) and production (with minification).
-* CSS module loading, so you can include your css by ```import styles from './path/to.css';```.
-* Both js(x) and css hot loaded during development.
-* [Webpack Dashboard Plugin](https://github.com/FormidableLabs/webpack-dashboard) on dev server.
-
-### To run
-
-* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
-* Fork and clone the project:
+Example:
 
 ```
-git clone https://github.com/alicoding/react-webpack-babel.git
+<AutoCompletion
+	autocompleteList={this.state.autocompleteList}
+	onChange={this.onAutocompleteChange}
+	onSelect={this.onTextAutocompleted}
+	InputComponent={FormControl}
+	attr={{
+	    id: 'custom-id',
+	    className: 'custom-class-name'
+	}}
+/>
 ```
 
-* Then install the dependencies:
+## Props
 
-```
-npm install
-```
+* **autocompleteList [Array]** optional
 
-* Run development server:
+An array of text that will be shown in autocomplete list.
 
-```
-npm start
-```
+* **onChange [function]** optional
 
-* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
+Callback for input onChange event. The first argument is an input value. Callback can perform request to API and set **autocompleteList**
 
-```
-npm run dev
-```
+* **onSelect [function]** optional
 
-Open the web browser to `http://localhost:8888/`
+Callback that is called when a user selects a value from autocomplete list. First argument is selected value.
 
-### To build the production package
+* **InputComponent [Object]** optional
 
-```
-npm run build
-```
+Component that will be used instead of HTML input. For example, you can use React-Bootstrap _FormControl_
 
-### Nginx Config
+* **attr [Object]** optional
 
-Here is an example Nginx config:
-```
-server {
-	# ... root and other options
-
-	gzip on;
-	gzip_http_version 1.1;
-	gzip_types text/plain text/css text/xml application/javascript image/svg+xml;
-
-	location / {
-		try_files $uri $uri/ /index.html;
-	}
-
-	location ~ \.html?$ {
-		expires 1d;
-	}
-
-	location ~ \.(svg|ttf|js|css|svgz|eot|otf|woff|jpg|jpeg|gif|png|ico)$ {
-		access_log off;
-		log_not_found off;
-		expires max;
-	}
-}
-```
-
-### Eslint
-There is a .eslint.yaml config for eslint ready with React plugin.
-To use it, you need to install additional dependencies though:
-
-```
-npm install --save-dev eslint eslint-plugin-react
-```
-
-To do the actual linting, run:
-
-```
-npm run lint
-```
-
-### Notes on importing css styles
-* styles having /src/ in their absolute path are considered part of the application and exported as local css modules.
-* other styles are considered global styles used by many components and are included in the css bundle directly.
-
-### Contribute
-Please contribute to the project if you know how to make it better, including this README :)
+Custom attributes for input component
