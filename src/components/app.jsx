@@ -22,22 +22,26 @@ export default class App extends React.Component {
                 }
             })
             .catch((error) => {
+                // Error does not interrupt user to complete entering
                 console.log(error);
             });
     }
 
     onTextAutocompleted(value) {
-        console.log(`Selected text: ${value}`);
+        console.log(`Selected: ${value}`);
     }
 
     render() {
         return (
           <div>
-            <h1>Autocompletion component</h1>
+            <h1>Youtube Autocompletion</h1>
             <AutoCompletion
                 autocompleteList={this.state.autocompleteList}
                 onChange={this.onAutocompleteChange}
                 onSelect={this.onTextAutocompleted}
+                attr={{
+                    className: 'custom-class-name'
+                }}
             />
           </div>
         )
