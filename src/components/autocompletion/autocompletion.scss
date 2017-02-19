@@ -1,7 +1,6 @@
 .autocomplete__container {
   width:100%;
   position: relative;
-  max-width: 600px;
 }
 
 .autocomplete__input {
@@ -14,11 +13,13 @@
   top:100%;
   width:100%;
   background: #ffffff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .autocomplete__list-item {
   cursor: pointer;
-  padding:3px 5px;
+  padding:3px 12px;
   &:hover {
     background: #eeeeee;
   }

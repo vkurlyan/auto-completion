@@ -1,6 +1,7 @@
 import React from 'react';
 import AutoCompletion from './autocompletion/AutoCompletion';
 import jp from 'jsonp-promise';
+import { Grid, PageHeader, FormControl, Alert, FormGroup } from 'react-bootstrap'
 
 const AUTOCOMPLETE_URL = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=%s';
 
@@ -11,6 +12,7 @@ export default class App extends React.Component {
             autocompleteList: null,
         };
         this.onAutocompleteChange = this.onAutocompleteChange.bind(this);
+        this.onTextAutocompleted = this.onTextAutocompleted.bind(this);
     }
 
     onAutocompleteChange(value) {
@@ -25,25 +27,34 @@ export default class App extends React.Component {
                 // Error does not interrupt user to complete entering
                 console.log(error);
             });
+        this.setState({selected: null})
     }
 
     onTextAutocompleted(value) {
-        console.log(`Selected: ${value}`);
+        this.setState({selected: value})
     }
 
     render() {
         return (
-          <div>
-            <h1>Youtube Autocompletion</h1>
-            <AutoCompletion
-                autocompleteList={this.state.autocompleteList}
-                onChange={this.onAutocompleteChange}
-                onSelect={this.onTextAutocompleted}
-                attr={{
-                    className: 'custom-class-name'
-                }}
-            />
-          </div>
+            <Grid>
+                <PageHeader>Youtube Autocompletion</PageHeader>
+                <FormGroup>
+                    <AutoCompletion
+                        autocompleteList={this.state.autocompleteList}
+                        onChange={this.onAutocompleteChange}
+                        onSelect={this.onTextAutocompleted}
+                        attr={{
+                            placeholder: 'Enter text'
+                        }}
+                        InputComponent={FormControl}
+                    />
+                </FormGroup>
+                {this.state.selected &&
+                    <Alert bsStyle="success">
+                        Selected: {this.state.selected}
+                    </Alert>
+                }
+            </Grid>
         )
     }
 }
