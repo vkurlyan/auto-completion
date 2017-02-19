@@ -9,7 +9,7 @@ export default class AutoCompletion extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isListOpen: false,
+      isListOpen: !!(props.autocompleteList && props.autocompleteList.length),
       value: '',
       currentListIndex: -1,
     };
@@ -163,7 +163,10 @@ export default class AutoCompletion extends React.PureComponent {
 }
 
 AutoCompletion.propTypes = {
-  InputComponent: PropTypes.object,
+  InputComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element,
+  ]),
   autocompleteList: PropTypes.array,
   onChange: PropTypes.func,
   onSelect: PropTypes.func,

@@ -1,0 +1,64 @@
+exports[`AutoCompletion shows autocompletion with custom input component 1`] = `
+<div
+  className="autocomplete__container">
+  <div
+    className="customInput">
+    <input
+      className="autocomplete__input "
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={undefined}
+      type="text"
+      value="" />
+  </div>
+</div>
+`;
+
+exports[`AutoCompletion shows input 1`] = `
+<div
+  className="autocomplete__container">
+  <input
+    className="autocomplete__input custom-class-name"
+    data-custom-attr="test"
+    id="custom-id"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={undefined}
+    type="text"
+    value="" />
+</div>
+`;
+
+exports[`AutoCompletion shows input with suggestions list 1`] = `
+<div
+  className="autocomplete__container">
+  <input
+    className="autocomplete__input "
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={undefined}
+    type="text"
+    value="" />
+  <div
+    className="autocomplete__list-container">
+    <div
+      className="autocomplete__list-item "
+      onClick={[Function]}>
+      test 1
+    </div>
+    <div
+      className="autocomplete__list-item "
+      onClick={[Function]}>
+      test 2
+    </div>
+    <div
+      className="autocomplete__list-item "
+      onClick={[Function]}>
+      test 3
+    </div>
+  </div>
+</div>
+`;
