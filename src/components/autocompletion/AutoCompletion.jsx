@@ -9,13 +9,10 @@ export default class AutoCompletion extends React.PureComponent {
       value: '',
     };
     this.onChange = this.onChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
-  // TODO hide on blur
-
   onChange(event) {
-    // TODO settimeout ?
-    console.log(event.target.value);
     this.setState({value: event.target.value});
     const value = event.target.value.trim();
 
@@ -24,6 +21,27 @@ export default class AutoCompletion extends React.PureComponent {
     } else if (typeof this.props.onChange === 'function'){
       this.props.onChange(value);
     }
+  }
+
+  onSelect(value) {
+    return () => {
+      this.setState({
+        value: value,
+        isListOpen: false
+      });
+
+      if (typeof this.props.onSelect === 'function') {
+        this.props.onSelect(value);
+      }
+    }
+  }
+
+  onBlur() {
+    // We have to wait while click will be triggered
+    // and then hide autocomplete list
+    setTimeout(() => {
+      this.setState({isListOpen: false})
+    }, 200);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,15 +64,16 @@ export default class AutoCompletion extends React.PureComponent {
       return (
           <div className="autocomplete__list-container">
             {this.props.autocompleteList.map((text, index) => (
-              <div className="autocomplete__list-item" key={index}>
+              <div
+                  className="autocomplete__list-item"
+                  key={index}
+                  onClick={this.onSelect(text)}>
                 {text}
               </div>
             ))}
           </div>
       )
     }
-
-    return null;
   }
 
   render() {
@@ -66,6 +85,7 @@ export default class AutoCompletion extends React.PureComponent {
       onKeyUp: this.onKeyUp,
       value: this.state.value,
       onChange: this.onChange,
+      onBlur: this.onBlur,
     }
 
     return (

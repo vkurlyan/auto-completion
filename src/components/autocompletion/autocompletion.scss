@@ -14,3 +14,11 @@
   width:100%;
   background: #ffffff;
 }
+
+.autocomplete__list-item {
+  cursor: pointer;
+  padding:3px 5px;
+  &:hover {
+    background: #eeeeee;
+  }
+}

@@ -26,6 +26,10 @@ export default class App extends React.Component {
             });
     }
 
+    onTextAutocompleted(value) {
+        console.log(`Selected text: ${value}`);
+    }
+
     render() {
         return (
           <div>
@@ -33,6 +37,7 @@ export default class App extends React.Component {
             <AutoCompletion
                 autocompleteList={this.state.autocompleteList}
                 onChange={this.onAutocompleteChange}
+                onSelect={this.onTextAutocompleted}
             />
           </div>
         )
