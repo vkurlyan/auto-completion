@@ -29,7 +29,7 @@ Example:
 
 > npm start
 
-* Then you will able to open example by address http://127.0.0.1:8888/
+* Open http://127.0.0.1:8888/
 
 ## Tests
 
